@@ -8,10 +8,10 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
+        <a href="https://www.instagram.com/bhbcglobal/" target="_blank">
           <img src={bhbcLogo} className="logo" alt="Vite logo" />
         </a>
-        <a href="https://react.dev" target="_blank">
+        <a href="https://web.facebook.com/BHBCGlobal" target="_blank">
           <img src={bhbcLogo} className="logo react" alt="React logo" />
         </a>
       </div>
@@ -25,7 +25,7 @@ function App() {
         </p>
       </div>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        Click on Each logo to learn more
       </p>
     </>
   )
