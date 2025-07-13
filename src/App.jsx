@@ -22,10 +22,10 @@ function App() {
           count is {count}
         </button>
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          This App is under development, Kindly check back later.
         </p>
       </div>
-      <p className="read-the-docs">
+      <p className="text-3xl">
         Click on Each logo to learn more
       </p>
        <Analytics />
