@@ -28,6 +28,7 @@ function App() {
       <p className="read-the-docs">
         Click on Each logo to learn more
       </p>
+       <Analytics />
     </>
   )
 }
