@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Toast = () => {
+const Form = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const Toast = () => {
   )
 }
 
-export default Toast
+export default Form
