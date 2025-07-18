@@ -1,33 +1,35 @@
-import { useState } from 'react'
+// import { useState } from 'react'
+
 import bhbcLogo from './assets/logo_black.png'
 // import './App.css'
 import { Analytics } from '@vercel/analytics/react'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://www.instagram.com/bhbcglobal/" target="_blank">
-          <img src={bhbcLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://web.facebook.com/BHBCGlobal" target="_blank">
-          <img src={bhbcLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="flex flex-col justify-center items-center pt-48 gap-4">
+        <div className = "flex items-center justify-center gap-4">
+          <a href="https://www.instagram.com/bhbcglobal/" target="_blank">
+            <img src={bhbcLogo} className="logo w-16 h-16" alt="Vite logo" />
+          </a>
+          <a href="https://web.facebook.com/BHBCGlobal" target="_blank">
+            <img src={bhbcLogo} className="logo w-16 h-16" alt="React logo" />
+          </a>
+        </div>
+        <h1 className="text-3xl text-black-600">BHBC MEDIA</h1>
+        <div className="card flex flex-col items-center gap-8">
+          <p className="text-2xl">
+            This App is under development, Kindly check back later.
+          </p>
+          <button className="cursor-pointer bg-black text-white p-2 rounded-md">
+            Get Started
+          </button>
+        </div>
+        
+        
       </div>
-      <h1>BHBC MEDIA</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          This App is under development, Kindly check back later.
-        </p>
-      </div>
-      <p className="text-3xl">
-        Click on Each logo to learn more
-      </p>
        <Analytics />
     </>
   )
