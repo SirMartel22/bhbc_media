@@ -3,8 +3,11 @@
 import bhbcLogo from './assets/logo_black.png'
 // import './App.css'
 import { Analytics } from '@vercel/analytics/react'
+import './index.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Form from './pages/Form'
 
-function App() {
+const App = () => {
   // const [count, setCount] = useState(0)
 
   return (
@@ -28,8 +31,12 @@ function App() {
           </button>
         </div>
         
-        
       </div>
+
+      <BrowserRouter>
+        <Route path="./Pages/Form" element={ <Form />} />
+      
+      </BrowserRouter>
        <Analytics />
     </>
   )
