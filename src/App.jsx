@@ -3,7 +3,7 @@ import { Analytics } from '@vercel/analytics/react'
 import './index.css'
 import {BrowserRouter, Routes, Route } from 'react-router-dom'
 import Form from './pages/Form'
-import MainPage from './Pages/MainPage'
+import MainPage from './pages/MainPage'
 
 const App = () => {
   return (
