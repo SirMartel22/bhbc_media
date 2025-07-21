@@ -11,6 +11,7 @@ const Form = () => {
         rounded-lg 
         border 
         text-[#36454F]
+        w-full
     `)
   
   const inputFormDivs = ctl(`
@@ -26,7 +27,7 @@ const Form = () => {
             <h1 className="text-[#fafcff] font-bold text-2xl">Welcome</h1>
 
             <p className=" text-center text-[#fafcff]">To start receiving update about when you're on duty, kindly register with your info</p>
-            <button className="register text-[#fafcff] font-bold border rounded-xl p-2">Register</button>
+            <button className="register text-[#3bb398] font-bold border rounded-xl p-2 bg-[#f5f5f5] hover:bg-[#3bb398] hover:text-[#f5fcff] w-full">Register</button>
           
           </div>
 
@@ -79,7 +80,7 @@ const Form = () => {
                     </div>
               </div>
 
-              <button onClick="" className=" bg-[#3bb398] text-[#fafcff] mt-6 font-bold border rounded-xl p-2 w-24">Submit</button>
+              <button onClick="" className="text-[#fafcff] mt-6 font-bold border rounded-xl p-2 bg-[#3bb398] hover:bg-[#f5f5f5] hover:text-[#3bb398]">Submit</button>
                   
               </form>
             
