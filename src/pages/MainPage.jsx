@@ -39,7 +39,7 @@ const MainPage = () => {
           <p className="text-2xl">
             This App is under development, Kindly check back later.
           </p>
-          <button className="cursor-pointer bg-black text-white p-2 rounded-md" onClick={()=> navigate('/Form')}>
+          <button className="cursor-pointer bg-black text-white p-2 rounded-md" onClick={()=> navigate('/Pages/Form')}>
             Get Started
           </button>
         </div>
