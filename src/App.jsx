@@ -4,14 +4,14 @@ import bhbcLogo from './assets/logo_black.png'
 // import './App.css'
 import { Analytics } from '@vercel/analytics/react'
 import './index.css'
-// import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Form from './pages/Form'
 import ctl from '@netlify/classnames-template-literals'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 const App = () => {
-  const navigate = useNavigate();
-
+  const navigate = useNavigate()
+  console.log(navigate);
   const mainDiv = ctl(`
       flex 
       flex-col 
@@ -29,6 +29,7 @@ const App = () => {
     `)
 
   return (
+          <BrowserRouter>
     <>
       <div className={ mainDiv }>
         <div className = {secondDiv}>
@@ -51,13 +52,13 @@ const App = () => {
         
       </div>
 
-      <BrowserRouter>
+
         <Routes>
           <Route path="./Pages/Form" element={ <Form />} />
         </Routes>
-      </BrowserRouter>
        <Analytics />
     </>
+      </BrowserRouter>
   )
 }
 
