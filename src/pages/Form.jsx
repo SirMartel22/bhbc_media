@@ -20,10 +20,10 @@ const Form = () => {
         gap-2
     `)
   return (
-    <div className="flex justify-center pt-8 px-48">
-      <div className="form-wrapper overflow-hidden rounded-xl w-full flex justify-center items-center">
+    <div className="flex justify-center pt-8 px-2 md:px-48">
+      <div className="form-wrapper overflow-hidden rounded-xl w-full flex flex-col md:flex-row justify-center items-center">
 
-          <div className="left-side flex flex-col justify-center items-center max-w-2xl bg-[#3bb398] p-12 gap-6 h-[100%] w-xl rounded-l-lg">
+          <div className="left-side flex flex-col justify-center items-center w-full md:w-xl md:max-w-2xl bg-[#3bb398] p-12 gap-6 h-[100%]  rounded-l-lg">
             <h1 className="text-[#fafcff] font-bold text-2xl">Welcome</h1>
 
             <p className=" text-center text-[#fafcff]">To start receiving update about when you're on duty, kindly register with your info</p>
@@ -31,7 +31,7 @@ const Form = () => {
           
           </div>
 
-          <div className="right-side flex flex-col justify-center items-left w-2xl max-w-3xl bg-[#f5f5f5] p-8 gap-6 h-full rounded-r-lg">
+          <div className="right-side flex flex-col justify-center items-left w-full md:w-2xl md:max-w-3xl bg-[#f5f5f5] p-8 gap-6 h-full rounded-r-lg">
             <div className="form-title text-[#3eaf9c] font-bold text-2xl">
               Register Your Info
             </div>
