@@ -9,7 +9,7 @@ app.get("/api", (req, res) => {
                 ["userOne", "userTwo", "userThree"]
         }
     )
-    console.log(res);
+    console.log(res.json());
 })
 
 const port = 5000;
