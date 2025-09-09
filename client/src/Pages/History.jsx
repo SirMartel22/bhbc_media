@@ -1,5 +1,4 @@
-import {useState, useEffect} from 'react'
-
+import React, {useState, useEffect} from 'react'
 
 
 const History = () => {
@@ -7,12 +6,10 @@ const History = () => {
   const [backendData, setBackendData] = useState([{}])
 
   useEffect(() => {
-    fetch("/api").then(
-      res => res.json()
-    ).then(
-      data => {
-        setBackendData(data)
-      }
+    fetch("/api")
+      .then(res => { console.log("res status", res.status); res.json()
+  })
+      .then(data => {setBackendData(data)}
     )
   }, [])
   
@@ -22,11 +19,11 @@ const History = () => {
     <div>
       <h2>This is Duty History Page</h2>
 
-      {(typeof backendData === "undefined")? (
+      {(typeof backendData === "undefined") ? (
         <p>Loading...</p>
       ) : (
           backendData.map((user, i) => (
-            <p key={i}>{ user}</p>
+            <p key={i}>{user.name}</p>
           ))
       )}
     </div>
