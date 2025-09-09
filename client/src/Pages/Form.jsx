@@ -19,6 +19,20 @@ const Form = () => {
         flex-col
         gap-2
     `)
+  
+
+  const handleSubmit = (e) => {
+    e.preventDefault() // stops page reload
+    const formData = new FormData(e.currentTarget);
+
+    for (let data of formData.entries()) {
+      // console.log({ value, key });
+      // console.log(key);
+      console.log(data)
+    }
+  }
+
+
   return (
     <div className="flex justify-center pt-8 px-2 md:px-48">
       <div className="form-wrapper overflow-hidden rounded-xl w-full flex flex-col md:flex-row justify-center items-center">
@@ -35,43 +49,43 @@ const Form = () => {
             <div className="form-title text-[#3eaf9c] font-bold text-2xl">
               Register Your Info
             </div>
-            <form action='/submit' method="POST" className="flex flex-col justify-center items-left gap-2 ">
+          <form onSubmit={ handleSubmit} action='/submit' method="POST" className="flex flex-col justify-center items-left gap-2 ">
               <div className={inputFormDivs }>
-                  <div className="name">
+                  <div className="fullname-div">
                       {/* <label for ="name" >Name </label> */}
-                      <input type="text" className={inputFormStyle} placeholder="Name e.g 'Timmy Oyin'" />  
+                      <input name="fullname" type="text" className={inputFormStyle} placeholder="Name e.g 'Timmy Oyin'" />  
                   </div>
 
 
-                  <div className="name">
+                  <div className="username-div">
                       {/* <label for ="name" >Username </label> */}
-                      <input type="text" className={inputFormStyle} placeholder="Username eg. 'SirMartel' " />  
+                      <input name="username"  type="text" className={inputFormStyle} placeholder="Username eg. 'SirMartel' " />  
                   </div>
               </div>
                     
               <div className={inputFormDivs}>
-                  <div className="name">
+                  <div className="email-div">
                       {/* <label for ="name">Email Address </label> */}
-                      <input type="email" className={inputFormStyle} placeholder="Email e.g 'someone@example.com'" />  
+                      <input name="email" type="email" className={inputFormStyle} placeholder="Email e.g 'someone@example.com'" />  
                     </div>
                     
-                  <div className="name">
+                  <div className="phone-div">
                       {/* <label for ="name">Phone </label> */}
-                      <input type="tel" className={inputFormStyle} placeholder="Phone '0908 877 6655' "/>  
+                      <input name="phone" type="tel" className={inputFormStyle} placeholder="Phone '0908 877 6655' "/>  
                     </div>
               </div>
               
-              <div className="WhatsApp">
-                  <div className="name">
+              <div className="WhatsApp-subunit">
+                  <div className="whatsapp-div">
                       {/* <label for ="name">WhatsApp Number</label> */}
-                      <input type="tel" className={inputFormStyle} placeholder="WhatsApp '0908 877 6655'" />  
+                      <input name="whatsapp" type="tel" className={inputFormStyle} placeholder="WhatsApp '0908 877 6655'" />  
                   </div>
               </div>
 
               <div className="unit">
-                  <div className="name">
+                  <div className="subunit">
                       {/* <label for ="name">Pick Your Unit in The Media</label> */}
-                        <select name="" id="" className={inputFormStyle}>
+                        <select name="subunit" id="" className={inputFormStyle}>
                             <option value="Content">Content </option>
                             <option value="Videography">Videography</option>
                             <option value="Photogrpahy">Photography</option>
@@ -82,13 +96,9 @@ const Form = () => {
 
               <button onClick="" className="text-[#fafcff] mt-6 font-bold border rounded-xl p-2 bg-[#3bb398] hover:bg-[#f5f5f5] hover:text-[#3bb398]">Submit</button>
                   
-              </form>
-            
-            </div>
-
+            </form>
+          </div>
       </div>
-
-      
     </div>
   )
 }
