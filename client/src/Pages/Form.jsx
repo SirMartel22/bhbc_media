@@ -1,5 +1,7 @@
 import React from 'react'
 import ctl from '@netlify/classnames-template-literals';
+import axios from 'axios'
+// import cors from 'cors'
 
 
 const Form = () => {
@@ -20,18 +22,38 @@ const Form = () => {
         gap-2
     `)
   
+    
+    const handleSubmit = async (e) => {
+  
+      e.preventDefault() // stops page reload
+      
+      let name = e.target.fullname.value;
+      let username = e.target.username.value;
+      let email = e.target.email.value;
+      let phone = e.target.phone.value;
+      let whatsapp = e.target.whatsapp.value;
+      let subunit = e.target.subunit.value;
 
-  const handleSubmit = (e) => {
-    e.preventDefault() // stops page reload
-    const formData = new FormData(e.currentTarget);
+      
+      const data = {name, username, email, phone, whatsapp, subunit}
+      
+      
+      console.log(data);
 
-    for (let data of formData.entries()) {
-      // console.log({ value, key });
-      // console.log(key);
-      console.log(data)
+      try {
+        const response = await axios.post('http://localhost:5000/server/server', data);
+        console.log(response.data);
+
+        // e.target.reset();
+
+      } catch (err){
+        console.log(`${err} is preventing form submission`)
+      }
     }
-  }
-
+    
+    // const submit = () => {
+      
+    // }
 
   return (
     <div className="flex justify-center pt-8 px-2 md:px-48">
@@ -94,7 +116,7 @@ const Form = () => {
                     </div>
               </div>
 
-              <button onClick="" className="text-[#fafcff] mt-6 font-bold border rounded-xl p-2 bg-[#3bb398] hover:bg-[#f5f5f5] hover:text-[#3bb398]">Submit</button>
+              <button className="text-[#fafcff] mt-6 font-bold border rounded-xl p-2 bg-[#3bb398] hover:bg-[#f5f5f5] hover:text-[#3bb398]">Submit</button>
                   
             </form>
           </div>
@@ -102,5 +124,6 @@ const Form = () => {
     </div>
   )
 }
+
 
 export default Form
