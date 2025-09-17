@@ -1,68 +1,72 @@
-const express = require('express')
-const {createClient} = require('@supabase/supabase-js')
+const express = require("express")
+const multer = require('multer')
+const cors = require('cors')
+
+// getting dotenv connection
+const dotenv = require('dotenv');
+
+//get supabase connection
+const { createClient } = require('@supabase/supabase-js');
+
+
+const path = require('path');
+const fs = require('fs');
+const bodyParser = require('body-parser') 
+
+dotenv.config();
 
 const app = express();
 
-
 const port = 5000
 
-const SUPABASE_URL = "https://hjhfvgleatyqzhuyeyzb.supabase.co";
-const SUPABASE_ANON_KEY ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhqaGZ2Z2xlYXR5cXpodXlleXpiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUzNzk4NTIsImV4cCI6MjA3MDk1NTg1Mn0.zD1SBGtcwSp3TUj3lgesYZP0khKDf3jykG4-ecFMhFc"
+//getting supabase key and url
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+//configuring middleware
 app.use(express.json());
+app.use(cors({
+    origin: ['http://localhost:5173', "http://127.0.0.1:5173"],
+    credentials: true,
+}))
+app.use(express.urlencoded({
+    extended: true,
+}))
 
-const jsonData = [
-        {
-        "name": "John Doe",
-        "username": "johndoe",
-        "email": "johndoe@example.com",
-        "phone": "08164404932",
-        "whatsapp": "08164404932",
-        "subunit": "livestream",
-        "headshot": "none"
-    },
 
-       {
-        "name": "John Doe",
-        "username": "johndoe",
-        "email": "johndoe@example.com",
-        "phone": "08164404932",
-        "whatsapp": "08164404932",
-        "subunit": "livestream",
-        "headshot": "none"
+app.post('/server/server', async (req, res) => {
+
+    const { name, username, email, phone, whatsapp, subunit } = req.body
+    console.log(req.body)
+
+    try {
+        //insert data into supabase table
+        const { data, error } = await supabase
+            .from('media-db')
+            .insert([{ name, username, email, phone, whatsapp, subunit }]);
+    
+        if (error) {
+            console.error("Supabase Insert Error: ", error);
+            return res.status(500).json({message: "Failed to register: ", error})
+        }
+        res.json({
+            message: "Thanks for Registering - Expect a mail in your inbox soon",
+            data: {name, username, email, phone, whatsapp, subunit}
+        })
+        
+    } catch (err) {
+        console.error("Server Error", err)
     }
-]
-
-app.get('/users', (req, res) => {
-    res.send('Hello Word')
+    
 })
 
-app.get('/media-db', async (req, res) => {
-    const { data, error } = await supabase.from('media-db').select('*');
-    if (error) {
-        console.error(error);
-        return res.status(500).json({
-            error: error.message
-        });
-    }
-    res.json(data);
+// ADD THIS: GET route for your form endpoint
+app.get('/server/server', (req, res) => {
+    res.json({
+        message: "Form endpoint is working",
+        method: "This endpoint accepts POST requests for form submissions",
+        expectedFields: ["name", "username", "email", "phone", "whatsapp", "subunit"]
+    });
 });
 
-app.post('/media-db', async (req, res) => {
-    // const { name, username, email, phone, whatsapp, subunit, headshot } = req.body;
-    const { data, error } = await supabase.from('media-db').insert(jsonData);
-    if (error) {
-        console.error(error);
-        return res.status(500).json({
-            error: error.message
-        });
-        res.status(201).json(data);
-    }
-});
-
-
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`)
-})
+app.listen( port, () => console.log(`Server is running on port: ${port}`))
