@@ -50,10 +50,7 @@ const Form = () => {
         console.log(`${err} is preventing form submission`)
       }
     }
-    
-    // const submit = () => {
-      
-    // }
+
 
   return (
     <div className="flex justify-center pt-8 px-2 md:px-48">
