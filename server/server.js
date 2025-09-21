@@ -38,11 +38,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/server/server', (req, res) => {
-    // const { name, username, email, phone, whatsapp, subunit } = req.body;
-    // console.log(req.body);
+    const { name, username, email, phone, whatsapp, subunit } = req.query;
+    console.log(req.query);
     res.json({
         Message: "Server is running successfully",
-        // data: { name, username, email, phone, whatsapp, subunit }
+        data: { name, username, email, phone, whatsapp, subunit }
     })
 });
 
