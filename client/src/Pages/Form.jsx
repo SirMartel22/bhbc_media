@@ -21,7 +21,6 @@ const Form = () => {
         flex-col
         gap-2
     `)
-  
     
     const handleSubmit = async (e) => {
   
@@ -50,7 +49,6 @@ const Form = () => {
         console.log(`${err} is preventing form submission`)
       }
     }
-
 
   return (
     <div className="flex justify-center pt-8 px-2 md:px-48">
@@ -107,7 +105,7 @@ const Form = () => {
                         <select name="subunit" id="" className={inputFormStyle}>
                             <option value="Content">Content </option>
                             <option value="Videography">Videography</option>
-                            <option value="Photogrpahy">Photography</option>
+                            <option value="Photography">Photography</option>
                             <option value="Livestream">Livestream & EasyWorship</option>
                         </select>  
                     </div>
