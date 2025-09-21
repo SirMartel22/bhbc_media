@@ -16,7 +16,7 @@ dotenv.config();
 
 const app = express();
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
@@ -52,8 +52,5 @@ app.post('/server/server', async (req, res) => {
         console.log(`This Error: ${error} cause data not to sent`)
     }
 })
-
-
-
 
 app.listen(port, ()=> console.log(`server is running on port: ${port}`))
