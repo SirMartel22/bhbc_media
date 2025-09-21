@@ -31,6 +31,22 @@ app.use(express.urlencoded({
     extended: true,
 }))
 
+app.get('/', (req, res) => {
+    res.json({
+        Message: `The Server is running on port: ${port}`
+    })
+})
+
+app.get('/server/server', (req, res) => {
+    // const { name, username, email, phone, whatsapp, subunit } = req.body;
+    // console.log(req.body);
+    res.json({
+        Message: "Server is running successfully",
+        // data: { name, username, email, phone, whatsapp, subunit }
+    })
+});
+
+
 app.post('/server/server', async (req, res) => {
     const { name, username, email, phone, whatsapp, subunit } = req.body
     console.log(req.body);
@@ -42,15 +58,16 @@ app.post('/server/server', async (req, res) => {
         
         if (error) {
             console.log("Supabase Insert Error:", error);
-            return res.status(500).json({message: "Failed to register: ", error })
+            return res.status(500).json({ message: "Failed to register: ", error })
         }
         res.json({
             message: "You've Successfully Signup - Expect a mail soon",
-            data: {name, username, email, phone, whatsapp, subunit}
+            data: { name, username, email, phone, whatsapp, subunit }
         })
     } catch (error) {
         console.log(`This Error: ${error} cause data not to sent`)
     }
-})
+});
+
 
 app.listen(port, ()=> console.log(`server is running on port: ${port}`))
