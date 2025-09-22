@@ -40,7 +40,7 @@ const Form = () => {
       console.log(data);
 
       try {
-        const response = await axios.post('https://media-backend-5r56.onrender.com/server/server', data);
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/server/server`, data);
         console.log(response.data);
 
         // e.target.reset();
